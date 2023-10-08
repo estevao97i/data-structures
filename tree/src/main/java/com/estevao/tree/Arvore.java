@@ -67,6 +67,7 @@ public class Arvore<T extends Comparable> {
                     substituto = substituto.getDireita();
                 }
 
+                // mantem o fluxo da arvore para o nó substituido
                 substituto.setDireita(atual.getDireita());
                 if (paiAtual != null) {
                     // coloca o substituto dentro do nó trocado da árvore
