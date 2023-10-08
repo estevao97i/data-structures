@@ -67,6 +67,7 @@ public class Arvore<T extends Comparable> {
                     substituto = substituto.getDireita();
                 }
 
+                substituto.setDireita(atual.getDireita());
                 if (paiAtual != null) {
                     // coloca o substituto dentro do nó trocado da árvore
                     if (atual.getValor().compareTo(paiAtual.getValor()) < 0) {

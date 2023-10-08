@@ -28,6 +28,24 @@ public class main {
         arvore.percorrerArvoreEmOrdem(arvore.getRaiz());
         System.out.println();
 
+        arvore.remover(8);
+        System.out.println();
+        System.out.println("Em Ordem");
+        arvore.percorrerArvoreEmOrdem(arvore.getRaiz());
+        System.out.println();
+
+        arvore.remover(9);
+        System.out.println();
+        System.out.println("Em Ordem");
+        arvore.percorrerArvoreEmOrdem(arvore.getRaiz());
+        System.out.println();
+
+        arvore.remover(10);
+        System.out.println();
+        System.out.println("Em Ordem");
+        arvore.percorrerArvoreEmOrdem(arvore.getRaiz());
+        System.out.println();
+
 
 //        System.out.println("Pré Ordem");
 //        arvore.percorrerArvorePreOrdem(arvore.getRaiz());
