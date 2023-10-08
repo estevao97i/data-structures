@@ -34,6 +34,31 @@ public class Arvore<T extends Comparable> {
         }
     }
 
+    public void excluirElemento(Elemento<T> valor) {
+        if (this.raiz == valor) {
+            this.raiz = null;
+        }
+        Elemento<T> atual = this.raiz;
+        while(true) {
+            if (valor.getValor().compareTo(atual.getValor()) < 0) {
+                if (atual.getEsquerda().getValor() != valor.getValor())  {
+                    atual = atual.getEsquerda();
+                } else {
+                    atual.setEsquerda(null);
+                    break;
+                }
+            }
+            if (valor.getValor().compareTo(atual.getValor()) > 0) {
+                if (atual.getDireita().getValor() != valor.getValor())  {
+                    atual = atual.getDireita();
+                } else {
+                    atual.setDireita(null);
+                    break;
+                }
+            }
+        }
+    }
+
     public void percorrerArvoreEmOrdem(Elemento<T> atual) {
         if(atual != null) {
             percorrerArvoreEmOrdem(atual.getEsquerda());
@@ -60,10 +85,5 @@ public class Arvore<T extends Comparable> {
 
     public Elemento<T> getRaiz() {
         return raiz;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
     }
 }
