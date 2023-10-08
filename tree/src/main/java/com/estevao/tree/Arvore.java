@@ -1,7 +1,5 @@
 package com.estevao.tree;
 
-import javax.swing.text.Element;
-
 public class Arvore<T extends Comparable> {
 
     private Elemento<T> raiz;
@@ -55,10 +53,10 @@ public class Arvore<T extends Comparable> {
         if (atual != null) {
 
             // elemento tem 2 filhos
-            if (atual.getDireita() != null && atual.getEsquerda() != null) {
+//            if (atual.getDireita() != null && atual.getEsquerda() != null) {
 
             // tem 1 filho à esquerda
-            } else if (atual.getEsquerda() != null) {
+            if (atual.getEsquerda() != null) {
 
                 Elemento<T> substituto = atual.getEsquerda();
                 Elemento<T> paiSubstituto = atual;
@@ -69,15 +67,19 @@ public class Arvore<T extends Comparable> {
                     substituto = substituto.getDireita();
                 }
 
-                // coloca o substituto dentro do nó trocado da árvore
-                if (atual.getValor().compareTo(paiAtual.getValor()) < 0) {
-                    paiAtual.setEsquerda(substituto);
-                } else {
-                    paiAtual.setDireita(substituto);
+                if (paiAtual != null) {
+                    // coloca o substituto dentro do nó trocado da árvore
+                    if (atual.getValor().compareTo(paiAtual.getValor()) < 0) {
+                        paiAtual.setEsquerda(substituto);
+                    } else {
+                        paiAtual.setDireita(substituto);
+                    }
+                } else { // se for a raiz
+                    this.raiz = substituto;
                 }
 
                 //remove o elemento da árvore
-                if (substituto.getValor().compareTo(paiSubstituto.getValor()) < 1) {
+                if (substituto.getValor().compareTo(paiSubstituto.getValor()) < 0) {
                     paiSubstituto.setEsquerda(null);
                 } else {
                     paiSubstituto.setDireita(null);
@@ -95,16 +97,19 @@ public class Arvore<T extends Comparable> {
                     paiSubstituto = substituto;
                     substituto = substituto.getEsquerda();
                 }
-
-                // coloca o substituto dentro do nó trocado da árvore
-                if (atual.getValor().compareTo(paiAtual.getValor()) < 0) {
-                    paiAtual.setEsquerda(substituto);
-                } else {
-                    paiAtual.setDireita(substituto);
+                if (paiAtual != null) {
+                    // coloca o substituto dentro do nó trocado da árvore
+                    if (atual.getValor().compareTo(paiAtual.getValor()) < 0) {
+                        paiAtual.setEsquerda(substituto);
+                    } else {
+                        paiAtual.setDireita(substituto);
+                    }
+                } else { // se for a raiz
+                    this.raiz = substituto;
                 }
 
                 //remove o elemento da árvore
-                if (substituto.getValor().compareTo(paiSubstituto.getValor()) < 1) {
+                if (substituto.getValor().compareTo(paiSubstituto.getValor()) < 0) {
                     paiSubstituto.setEsquerda(null);
                 } else {
                     paiSubstituto.setDireita(null);
@@ -113,10 +118,14 @@ public class Arvore<T extends Comparable> {
 
             // não tem filhos
             } else {
-                if (paiAtual.getDireita() != null) {
-                    paiAtual.setDireita(null);
-                } else {
-                    paiAtual.setEsquerda(null);
+                if (paiAtual != null) {
+                    if (paiAtual.getDireita() != null) {
+                        paiAtual.setDireita(null);
+                    } else {
+                        paiAtual.setEsquerda(null);
+                    }
+                } else { // é a raiz
+                    this.raiz = null;
                 }
             }
             return true;
