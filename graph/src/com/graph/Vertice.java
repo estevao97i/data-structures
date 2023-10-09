@@ -29,4 +29,20 @@ public class Vertice<T> {
     public void adicionarArestaSaída(Aresta<T> aresta) {
         this.arestasSaida.add(aresta);
     }
+
+    public ArrayList<Aresta<T>> getArestasEntrada() {
+        return arestasEntrada;
+    }
+
+    public void setArestasEntrada(ArrayList<Aresta<T>> arestasEntrada) {
+        this.arestasEntrada = arestasEntrada;
+    }
+
+    public ArrayList<Aresta<T>> getArestasSaida() {
+        return arestasSaida;
+    }
+
+    public void setArestasSaida(ArrayList<Aresta<T>> arestasSaida) {
+        this.arestasSaida = arestasSaida;
+    }
 }
